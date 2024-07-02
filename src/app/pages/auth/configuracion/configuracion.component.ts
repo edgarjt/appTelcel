@@ -4,6 +4,7 @@ import { Router, RouterLink } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { DataService } from "../../../shared/data-service";
 import { AuthService } from "../../../core/services/auth.service";
+import { CustomValidators } from "../../../core/validators/custom.validators";
 
 @Component({
   selector: 'app-configuracion',
@@ -20,7 +21,7 @@ export class ConfiguracionComponent implements OnInit {
               private dataService: DataService,
               private authService: AuthService) {
     this.dataForm = this.fb.group({
-      phone: new FormControl('', [Validators.required])
+      phone: new FormControl('', [Validators.required, CustomValidators.telefono()])
     })
   }
 
