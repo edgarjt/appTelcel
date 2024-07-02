@@ -14,7 +14,11 @@ export class CheckInServiceService {
     this.url = environment.apiUrl + 'entradasalidas/';
   }
 
+  getCheckInOut(userId: string, date: string): Observable<ResponseCheckInInterface[]> {
+    return this.http.get<any>(`${this.url}buscar/usuario/${userId}/${date}`);
+  }
+
   checkIn(request: RequestCheckInInterface): Observable<ResponseCheckInInterface> {
-    return this.http.post<any>(this.url + 'registrar', request);
+    return this.http.post<any>(`${this.url}registrar`, request);
   }
 }

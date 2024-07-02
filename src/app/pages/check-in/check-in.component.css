@@ -1,3 +1,60 @@
-button {
-  width: 45%;
+.button-check {
+  width: 65px;
+  height: 65px;
 }
+
+.color-no-check {
+  background-color: #cecece;
+  color: #282828;
+}
+
+.color-check-in {
+  background-color: #2ECC71;
+  color: white;
+}
+
+.color-check-out {
+  background-color: #C0392B;
+  color: white;
+}
+
+.card-check-in {
+  height: 80px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: #2ECC71 solid 2px;
+  background: #FFFFFF;
+}
+
+.card-check-out {
+  height: 80px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: #C0392B solid 2px;
+  background: #FFFFFF;
+}
+
+.card-check-resume {
+  height: 80px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: #1F49A7 solid 2px;
+  background: #FFFFFF;
+}
+
+.hist-check {
+  width: 45px;
+  height: 45px;
+}
+
+.green {
+  background: #2ECC71;
+  color: white;
+}
+
+.red {
+  background: #C0392B;
+  color: white;
+}
+
+

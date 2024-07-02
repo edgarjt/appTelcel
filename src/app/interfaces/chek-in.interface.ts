@@ -9,7 +9,7 @@ export interface ResponseCheckInInterface {
   usuarioId: number;
   usuario: Usuario;
   tipo: number;
-  fechaHora: Date;
+  fechaHora: string;
 }
 
 export interface Usuario {

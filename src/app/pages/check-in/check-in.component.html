@@ -1,4 +1,44 @@
-<div class="w-100 d-flex justify-content-arrow align-items-center" style="height: 500px">
-    <button mat-raised-button (click)="checkInClick()" [disabled]="checkIn">Marcar entrada</button>
-    <button mat-raised-button (click)="checkOutClick()" [disabled]="checkOut">Marcar salida</button>
+<div class="w-100">
+  <div class="text-center">
+    @if (!isFinished) {
+      <p class="h2">{{textCheck}}</p>
+      <button [class]="classCheck" mat-fab (click)="check(classCheck == 'color-check-in' ? 1 : 2)">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    } @else {
+      <p class="h2">Actividades del día concluidas</p>
+    }
+  </div>
+
+
+  <div class="w-100 mt-4">
+    @for (listCheck of listChecks; track listCheck) {
+      <div class="w-100 d-flex justify-content-arrow align-items-center mb-4"
+           [class]="(listCheck.tipo === 1) ? 'card-check-in' : 'card-check-out'">
+        <div>
+          <button mat-fab class="hist-check"
+                  [class]="(listCheck.tipo === 1) ? 'green' : 'red'">
+            <mat-icon>power_settings_new</mat-icon>
+          </button>
+        </div>
+        <div>
+          <p>Fecha</p>
+          <p>{{moment(listCheck.fechaHora).format('YYYY-MM-DD')}}</p>
+        </div>
+        <div>
+          <p>Hora</p>
+          <p>{{listCheck.fechaHora.split('T')[1]}}</p>
+        </div>
+      </div>
+    }
+
+    @if (isFinished) {
+      <div class="w-100 mt-4 card-check-resume d-flex justify-content-arrow align-items-center">
+        <div class="text-center">
+          <p>Duración de jornada</p>
+          <p>{{calculateHoursWorked(listChecks)}}</p>
+        </div>
+      </div>
+    }
+  </div>
 </div>
