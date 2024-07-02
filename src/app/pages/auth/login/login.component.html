@@ -1,0 +1,40 @@
+<div class="w-100 vh-100 d-flex justify-content-center align-items-center">
+  <div class="cont-login">
+    <div class="w-100 d-flex justify-content-center">
+      <img class="logo" src="../../../../assets/img/telcel_logo.png" alt="logo-telcel">
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input type="email" matInput formControlName="email">
+        <mat-error>Usuario no valido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <a mat-icon-button
+          matSuffix
+           (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </a>
+        <mat-error>Contraseña no valido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Seleccionar región</mat-label>
+        <mat-select>
+          <mat-option value="1">Región 1</mat-option>
+          <mat-option value="2">Región 2</mat-option>
+          <mat-option value="3">Región 3</mat-option>
+          <mat-option value="4">Región 4</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class="w-100" mat-raised-button color="primary">Ingresar</button>
+    </form>
+  </div>
+</div>

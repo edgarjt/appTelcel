@@ -1,0 +1,83 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>AppTelcel</mat-toolbar>
+    <mat-divider></mat-divider>
+
+
+
+    <mat-nav-list>
+      <mat-toolbar-row>Menú</mat-toolbar-row>
+      <a mat-menu-item
+         [routerLink]="'/checkin'"
+         [routerLinkActive]="'active'"
+         (click)="drawer.toggle()">
+        <mat-icon>schedule</mat-icon>
+        Chek-In
+      </a>
+
+      <a mat-menu-item
+         (click)="drawer.toggle()">
+        <mat-icon>description</mat-icon>
+        Iniciar Portabilidad
+      </a>
+
+      <a mat-menu-item
+         (click)="drawer.toggle()">
+        <mat-icon>sim_card</mat-icon>
+        Activaciones Prepago
+      </a>
+
+      <a mat-menu-item
+         (click)="drawer.toggle()">
+        <mat-icon>assignment</mat-icon>
+        Lista de Pendientes
+      </a>
+    </mat-nav-list>
+
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-toolbar-row>Otros</mat-toolbar-row>
+      <a mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        Configuración
+      </a>
+
+      <a mat-menu-item>
+        <mat-icon>help</mat-icon>
+        Ayuda
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>AppTelcel</span>
+
+      <span class="app-bar-spacer"></span>
+
+      <mat-menu #notifications="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="dashboard">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,27 @@
+
+  <mat-toolbar class="fixed-top" color="primary">
+    <button [routerLink]="'/login'" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Configuración</span>
+    <span class="nav-spacer"></span>
+  </mat-toolbar>
+
+  <div class="w-100 vh-100 d-flex align-items-center justify-content-center">
+    <div class="cont-login">
+      <div class="w-100 text-center">
+        <p class="text-primary h1">Capturar número telefónico del promotor</p>
+      </div>
+      <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Número telefónico</mat-label>
+          <input matInput formControlName="phone" maxlength="10">
+          <mat-error>Teléfono no valido</mat-error>
+        </mat-form-field>
+
+        <button class="w-100" mat-raised-button color="primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+
