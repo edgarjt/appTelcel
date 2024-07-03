@@ -1,0 +1,120 @@
+<div [@slideInOut]="screen === 1 ? 'in' : 'out'" class="w-100">
+
+  @if (screen == 1) {
+    <ng-container>
+      <p class="h2">Seguimiento de incentivos</p>
+      <mat-list>
+        @for (incentivo of incentivos; track incentivo) {
+          <mat-list-item>
+            <div class="w-100 d-flex justify-content-between">
+              <p>
+                <button mat-mini-fab class="button-icon">
+                  <mat-icon class="">redeem</mat-icon>
+                </button>
+                {{ incentivo.marca }}
+              </p>
+              <p>
+                {{ incentivo.marca }}
+                <button (click)="toggleScreen(incentivo)" mat-mini-fab class="button-icon">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </p>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        }
+      </mat-list>
+    </ng-container>
+  }
+</div>
+
+<div [@slideInOut]="screen === 2 ? 'in' : 'out'" class="w-100">
+  @if (screen == 2) {
+    <ng-container>
+      <p class="h2">Detalle del incentivo</p>
+      <table class="w-100">
+        <tr class="row-content">
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Cadena comercial</p>
+              <p>{{moreDetail?.cadenaComercial}}</p>
+            </div>
+          </td>
+
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Región</p>
+              <p>{{moreDetail?.region}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Marca</p>
+              <p>{{moreDetail?.marca}}</p>
+            </div>
+          </td>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Modelo</p>
+              <p>{{moreDetail?.modelo}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Color</p>
+              <p>{{moreDetail?.color}}</p>
+            </div>
+          </td>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Cantidad</p>
+              <p>{{moreDetail?.cantidad}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Tipo de producto</p>
+              <p>{{moreDetail?.tipoDeProducto}}</p>
+            </div>
+          </td>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Vigencia inicio</p>
+              <p>{{moreDetail?.vigenciaInicio}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <div class="col-row">
+              <p class="text-primary">Vigencia fin</p>
+              <p>{{moreDetail?.vigenciaFin}}</p>
+            </div>
+          </td>
+
+          <td>
+            <div class="col-row">
+              <p class="text-primary">Nota</p>
+              <p>{{moreDetail?.nota}}</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <button (click)="toggleScreen()" class="mt-4 w-100" mat-raised-button color="primary">Regresar</button>
+    </ng-container>
+  }
+</div>
+
+
+

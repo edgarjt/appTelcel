@@ -1,19 +1,21 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
-import {catchError, finalize, throwError} from "rxjs";
+import { catchError, finalize, throwError } from "rxjs";
+import { ModalsService } from "../services/modals.service";
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const spinner = inject(NgxSpinnerService);
-  console.log('Interceptando');
+  const modalsService = inject(ModalsService);
+
   spinner.show();
 
   return next(req).pipe(
     catchError((err) => {
       if (err.status === 500 || err.error?.message === 'Failed to fetch') {
-        alert('Por el momento el servicio no se encuentra disponible.');
+        modalsService.openModal('Por el momento el servicio no se encuentra disponible.', 'error');
       } else if (err.status === 401) {
-        alert('Credenciales invalidas')
+        modalsService.openModal('La contraseña o el usuario son incorrecto', 'warning');
       }
       return throwError(() => err);
     }),

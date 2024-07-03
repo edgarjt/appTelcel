@@ -3,7 +3,7 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>AppTelcel</mat-toolbar>
+    <mat-toolbar>DemoTelcel</mat-toolbar>
     <mat-divider></mat-divider>
 
 
@@ -18,23 +18,21 @@
         Chek-In
       </a>
 
-      <a mat-menu-item
-         (click)="drawer.toggle()">
-        <mat-icon>description</mat-icon>
-        Iniciar Portabilidad
-      </a>
 
-      <a mat-menu-item
-         (click)="drawer.toggle()">
-        <mat-icon>sim_card</mat-icon>
-        Activaciones Prepago
-      </a>
-
-      <a mat-menu-item
-         (click)="drawer.toggle()">
-        <mat-icon>assignment</mat-icon>
-        Lista de Pendientes
-      </a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="icon-expansion">redeem</mat-icon>
+            Promotoria
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <a mat-menu-item [routerLink]="'incentives'"
+             [routerLinkActive]="'active'"
+             (click)="drawer.toggle()">
+            <mat-icon class="icon-expansion">signal_cellular_alt</mat-icon>Incentivos</a>
+        </mat-list>
+      </mat-expansion-panel>
     </mat-nav-list>
 
     <mat-nav-list>
@@ -62,7 +60,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>AppTelcel</span>
+      <span>DemoTelcel</span>
 
       <span class="app-bar-spacer"></span>
 

@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: DashboardComponent, children:
       [
         { path: 'checkin', loadChildren: () => import('./pages/check-in/check-in-routing.module').then(m => m.CheckInRoutingModule) },
+        { path: 'incentives', loadChildren: () => import('./pages/promotoria/incentivos/incentivos-routing.module').then(m => m.IncentivosRoutingModule) }
       ]
   },
 ];

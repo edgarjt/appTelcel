@@ -1,0 +1,24 @@
+p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.row-content {
+  margin-bottom: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.text-primary {
+  font-weight: 500;
+}
+
+.col-row {
+  padding-bottom: 10px;
+}
+
+.button-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 7px;
+  margin-left: 10px;
+  background: #FFFFFF;
+}

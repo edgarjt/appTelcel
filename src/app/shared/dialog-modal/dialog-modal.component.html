@@ -1,1 +1,22 @@
-<p>dialog-modal works!</p>
+<div class="p-3">
+  <div class="modal-body">
+    @switch (type_modal) {
+      @case (ModalType.ERROR) {
+        <p class="h3">Error</p>
+      }
+      @case (ModalType.WARNING) {
+        <p class="h3">Precaución</p>
+      }
+      @default {
+        <p class="h3">Éxito</p>
+      }
+    }
+
+    <p class="message">{{message}}</p>
+  </div>
+
+  <div class="d-flex justify-content-end mt-2">
+    <button mat-button color="primary" (click)="closeDialog()">Cerrar</button>
+  </div>
+
+</div>

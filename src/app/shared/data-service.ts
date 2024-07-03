@@ -5,11 +5,10 @@ import { ResponseLoginInterface } from "../interfaces/auth.interface";
   providedIn: 'root'
 })
 export class DataService {
-  private _credentialUser: ResponseLoginInterface | any;
+  private _credentialUser: ResponseLoginInterface;
+  private _region: string;
 
-  constructor() {
-    this._credentialUser = null;
-  }
+  constructor() {}
 
   get credentialUser(): ResponseLoginInterface {
     return this._credentialUser;
@@ -17,5 +16,13 @@ export class DataService {
 
   set credentialUser(value: ResponseLoginInterface) {
     this._credentialUser = value;
+  }
+
+  get region(): string {
+    return this._region;
+  }
+
+  set region(value: string) {
+    this._region = value;
   }
 }

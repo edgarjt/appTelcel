@@ -17,6 +17,7 @@ import { AuthService } from "../../core/services/auth.service";
 })
 export class DashboardComponent implements OnInit{
   private breakpointObserver = inject(BreakpointObserver);
+  expanded = false;
 
   constructor(private router: Router,
               private title: Title,

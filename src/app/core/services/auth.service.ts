@@ -25,8 +25,9 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/logout`, request);
   }
 
-  saveCredential(credential: ResponseLoginInterface): void {
+  saveCredential(credential: ResponseLoginInterface, region: string): void {
     sessionStorage.setItem('user', JSON.stringify(credential));
+    sessionStorage.setItem('region', region);
   }
 
   getCredential(): ResponseLoginInterface {

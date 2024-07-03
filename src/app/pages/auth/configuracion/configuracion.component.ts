@@ -5,11 +5,12 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { DataService } from "../../../shared/data-service";
 import { AuthService } from "../../../core/services/auth.service";
 import { CustomValidators } from "../../../core/validators/custom.validators";
+import { NumberOnlyDirective } from "../../../core/directives/number-only.directive";
 
 @Component({
   selector: 'app-configuracion',
   standalone: true,
-  imports: [MaterialModule, RouterLink, ReactiveFormsModule],
+  imports: [MaterialModule, RouterLink, ReactiveFormsModule, NumberOnlyDirective],
   templateUrl: './configuracion.component.html',
   styleUrl: './configuracion.component.css'
 })
@@ -33,7 +34,7 @@ export class ConfiguracionComponent implements OnInit {
       return;
     }
     const request = this.dataForm.value;
-    this.authService.saveCredential(this.dataService.credentialUser)
+    this.authService.saveCredential(this.dataService.credentialUser, this.dataService.region);
 
     this.router.navigate(['/']);
   }
