@@ -12,10 +12,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err) => {
-      if (err.status === 500 || err.error?.message === 'Failed to fetch') {
+      if (err.status === 500 || err.status === 502 || err.status === 504 || err.error?.message === 'Failed to fetch') {
         modalsService.openModal('Por el momento el servicio no se encuentra disponible.', 'error');
       } else if (err.status === 401) {
-        modalsService.openModal('La contraseña o el usuario son incorrecto', 'warning');
+        modalsService.openModal('Usuario o contraseña incorrecto.', 'warning');
       }
       return throwError(() => err);
     }),

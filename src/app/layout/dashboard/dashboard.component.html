@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               [opened]="(isHandset$ | async) === false">
+               [opened]="false">
     <mat-toolbar>DemoTelcel</mat-toolbar>
     <mat-divider></mat-divider>
 
@@ -11,11 +11,19 @@
     <mat-nav-list>
       <mat-toolbar-row>Menú</mat-toolbar-row>
       <a mat-menu-item
+         [routerLink]="'/home'"
+         [routerLinkActive]="'active'"
+         (click)="drawer.toggle()">
+        <mat-icon>home</mat-icon>
+        Inicio
+      </a>
+
+      <a mat-menu-item
          [routerLink]="'/checkin'"
          [routerLinkActive]="'active'"
          (click)="drawer.toggle()">
         <mat-icon>schedule</mat-icon>
-        Chek-In
+        Check-In
       </a>
 
 
@@ -23,13 +31,13 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon class="icon-expansion">redeem</mat-icon>
-            Promotoria
+            Promotoría
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-list>
-          <a mat-menu-item [routerLink]="'incentives'"
+          <a mat-menu-item
              [routerLinkActive]="'active'"
-             (click)="drawer.toggle()">
+             (click)="openOption()">
             <mat-icon class="icon-expansion">signal_cellular_alt</mat-icon>Incentivos</a>
         </mat-list>
       </mat-expansion-panel>
@@ -51,7 +59,6 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -59,7 +66,7 @@
           (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-      }
+
       <span>DemoTelcel</span>
 
       <span class="app-bar-spacer"></span>

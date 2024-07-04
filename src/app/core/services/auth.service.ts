@@ -21,8 +21,8 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/login`, request);
   }
 
-  logout(request: RequestLoginInterface): Observable<ResponseLogoutInterface> {
-    return this.http.post<any>(`${this.url}/logout`, request);
+  logout(userId: number): Observable<ResponseLogoutInterface> {
+    return this.http.post<any>(`${this.url}/logout/${userId}`, {});
   }
 
   saveCredential(credential: ResponseLoginInterface, region: string): void {

@@ -14,7 +14,7 @@
     <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Número telefónico</mat-label>
-        <input matInput formControlName="phone" numberOnly maxlength="10">
+        <input type="tel" matInput formControlName="phone" numberOnly maxlength="10">
         <mat-error>Teléfono no valido</mat-error>
       </mat-form-field>
 
