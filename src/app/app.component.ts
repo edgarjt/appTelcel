@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { NgxSpinnerComponent } from "ngx-spinner";
+import { PushNotificationService } from "./core/services/push-notification.service";
 
 @Component({
   selector: 'app-root',
@@ -22,9 +23,21 @@ export class AppComponent implements OnInit {
     this.showInstallButton = true;
   }
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private _snackBar: MatSnackBar,
+              private pushNotificationService: PushNotificationService) {
+    this.pushNotificationService.requestPermission().then((token: any) => {
+      console.log(token);
+      //this.notificationService.sendPushNotification(token, 'Nueva versión disponible', 'Por favor, recargue la página para aplicar los cambios.');
+    })
+  }
 
   ngOnInit() {
+    this.pushNotificationService.receiveMessage().subscribe({
+      next: (message) => {
+        console.log('Token:', message);
+
+      }
+    })
     setTimeout(() => {
       if (this.showInstallButton) {
         this.openSnackBar('¿Deseas instalar la app?', 'Instalar');
