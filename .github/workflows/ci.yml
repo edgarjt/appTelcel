@@ -11,5 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run a script
-        run: echo "Hello from the self-hosted runner!"
+
+      - name: Make start.sh executable
+        run: chmod +x start.sh
+
+      - name: Run start.sh script
+        run: ./start.sh
