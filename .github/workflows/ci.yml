@@ -3,7 +3,7 @@ name: CI con Self-Hosted Runner
 on:
   push:
     branches:
-      - DesplieguesContinuos
+      - deploy/prueba1
 
 jobs:
   build:
