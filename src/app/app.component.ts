@@ -12,7 +12,7 @@ import { PushNotificationService } from "./core/services/push-notification.servi
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'demoTelcel';
+  title = 'App Cambaceo';
   deferredPrompt: any;
   showInstallButton: boolean = false;
 

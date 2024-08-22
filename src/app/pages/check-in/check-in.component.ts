@@ -34,6 +34,22 @@ export class CheckInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const data = sessionStorage.getItem('checkin');
+    if (data) {
+      const checkin = JSON.parse(data);
+
+      if (checkin.length == 1) {
+        this.textCheck = 'Check-Out';
+        this.classCheck = 'color-check-out';
+        sessionStorage.setItem('isCheckin', '1');
+      }
+
+      if (checkin.length >= 2) {
+        this.isFinished = true;
+      }
+      this.listChecks = checkin;
+
+    }
   }
 
   getCheck(): void {
@@ -120,7 +136,8 @@ export class CheckInComponent implements OnInit {
 
     sessionStorage.setItem('isCheckin', '1');
     this.listChecks.push(add);
-    this.verifyStatusCheckIn(this.listChecks)
+    this.verifyStatusCheckIn(this.listChecks);
+    sessionStorage.setItem('checkin', JSON.stringify(this.listChecks));
 
     /*
     this.modalsService.openModal(message, 'confirm').subscribe({

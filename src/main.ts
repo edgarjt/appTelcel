@@ -6,6 +6,7 @@ bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
 // agrega serviceWorker
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('firebase-messaging-sw.js')
     .then((registration) => {
